@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 project(KinectFusionLib)
 
@@ -21,7 +21,7 @@ ENDIF ()
 
 ## OpenCV
 # Optional: Set OpenCV_DIR if you want to use a custom version of OpenCV
-SET("OpenCV_DIR" "/opt/opencv/usr/local/share/OpenCV")
+SET("OpenCV_DIR" "C:/Users/91901/Desktop/BTP/kinect/opencv/build")
 find_package(OpenCV 3.0 REQUIRED)
 if (OpenCV_INCLUDE_DIRS)
     include_directories("${OpenCV_INCLUDE_DIRS}")
