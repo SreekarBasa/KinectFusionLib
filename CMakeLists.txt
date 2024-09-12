@@ -22,21 +22,24 @@ ENDIF ()
 
 ## OpenCV
 # Update OpenCV version to 4.5 or another version that you have installed
-set(OpenCV_DIR "C:/Users/91901/Desktop/BTP/kinect/opencv/build")  # Adjust this path
-find_package(OpenCV 4.5 REQUIRED)  # Use 4.5 instead of 4.10
+# set(OpenCV_DIR "C:/Users/91901/Desktop/BTP/kinect/opencv/build")  # Adjust this path
+# find_package(OpenCV 4.5 REQUIRED)  # Use 4.5 instead of 4.10
 
-if(OpenCV_FOUND)
-    include_directories(${OpenCV_INCLUDE_DIRS})
-    link_directories(${OpenCV_DIR}/lib)
-else()
-    message(FATAL_ERROR "OpenCV not found. Make sure OpenCV is correctly installed and OpenCV_DIR is set.")
+# if(OpenCV_FOUND)
+#     include_directories(${OpenCV_INCLUDE_DIRS})
+#     link_directories(${OpenCV_DIR}/lib)
+# else()
+#     message(FATAL_ERROR "OpenCV not found. Make sure OpenCV is correctly installed and OpenCV_DIR is set.")
+# endif()
+
+# Manually set the path to Eigen's include directory
+set(Eigen3_INCLUDE_DIR "C:/Program Files (x86)/eigen-3.4.0")  # Update to the correct path where Eigen is installed
+include_directories(${Eigen3_INCLUDE_DIR})
+# Ensure Eigen is found and required version is satisfied
+if (NOT EXISTS "${Eigen3_INCLUDE_DIR}/Eigen/Dense")
+    message(FATAL_ERROR "Eigen3 not found at ${Eigen3_INCLUDE_DIR}")
 endif()
 
-## Eigen3
-find_package(Eigen3 REQUIRED)
-if (Eigen3_FOUND)
-    include_directories(${EIGEN3_INCLUDE_DIR})
-endif()
 
 # ------------------------------------------------
 # CMake flags
