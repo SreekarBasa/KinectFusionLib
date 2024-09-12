@@ -2,7 +2,6 @@
 // Author: Christian Diller, git@christian-diller.de
 
 #include <kinectfusion.h> 
-
 #include <fstream>
 
 using cv::cuda::GpuMat;
