@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.5)
-cmake_policy(SET CMP0146 NEW)  # Set the policy for CUDA
 project(KinectFusionLib)
 
 # Use modern C++
@@ -9,37 +8,35 @@ set(CMAKE_CXX_STANDARD 20)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # ------------------------------------------------
-#                 Dependencies
+# Dependencies
 # ------------------------------------------------
-## CUDA
 
+## CUDA
 set(CUDA_TOOLKIT_ROOT_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1")
 find_package(CUDAToolkit REQUIRED)
-IF (CUDAToolkit_FOUND)
+if(CUDAToolkit_FOUND)
     include_directories("${CUDAToolkit_INCLUDE_DIRS}")
-    SET(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3;-std=c++11 -gencode arch=compute_52,code=sm_52)
-ENDIF ()
-
-## OpenCV
-# Update OpenCV version to 4.5 or another version that you have installed
-# set(OpenCV_DIR "C:/Users/91901/Desktop/BTP/kinect/opencv/build")  # Adjust this path
-# find_package(OpenCV 4.5 REQUIRED)  # Use 4.5 instead of 4.10
-
-# if(OpenCV_FOUND)
-#     include_directories(${OpenCV_INCLUDE_DIRS})
-#     link_directories(${OpenCV_DIR}/lib)
-# else()
-#     message(FATAL_ERROR "OpenCV not found. Make sure OpenCV is correctly installed and OpenCV_DIR is set.")
-# endif()
-
-# Manually set the path to Eigen's include directory
-set(Eigen3_INCLUDE_DIR "C:/Program Files (x86)/eigen-3.4.0")  # Update to the correct path where Eigen is installed
-include_directories(${Eigen3_INCLUDE_DIR})
-# Ensure Eigen is found and required version is satisfied
-if (NOT EXISTS "${Eigen3_INCLUDE_DIR}/Eigen/Dense")
-    message(FATAL_ERROR "Eigen3 not found at ${Eigen3_INCLUDE_DIR}")
+    set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -O3 -std=c++11 -gencode arch=compute_52,code=sm_52")
 endif()
 
+message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS_PATH}")
+
+## OpenCV
+set(OpenCV_DIR "C:/Users/91901/Desktop/BTP/kinect/opencv/build")
+find_package(OpenCV REQUIRED)
+if(OpenCV_FOUND)
+    include_directories(${OpenCV_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "OpenCV not found. Make sure OpenCV is correctly installed and OpenCV_DIR is set.")
+endif()
+
+# Manually set the path to Eigen's include directory
+set(Eigen3_INCLUDE_DIR "C:/Program Files (x86)/eigen-3.4.0")
+include_directories(${Eigen3_INCLUDE_DIR})
+if(NOT EXISTS "${Eigen3_INCLUDE_DIR}/Eigen/Dense")
+    message(FATAL_ERROR "Eigen3 not found at ${Eigen3_INCLUDE_DIR}")
+endif()
 
 # ------------------------------------------------
 # CMake flags
@@ -57,4 +54,10 @@ file(GLOB KinectFusion_SRCS "${PROJECT_SOURCE_DIR}/cuda/*.cu" "${PROJECT_SOURCE_
 add_library(KinectFusion STATIC ${KinectFusion_SRCS})
 
 # Link libraries
-target_link_libraries(KinectFusion ${OpenCV_LIBS} ${CUDA_CUDART_LIB})
+target_link_libraries(KinectFusion ${OpenCV_LIBS} ${CUDAToolkit_LIBRARIES})
+
+message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS_PATH}")
+message(STATUS "CUDAToolkit_INCLUDE_DIRS: ${CUDAToolkit_INCLUDE_DIRS}")
+message(STATUS "CUDAToolkit_LIBRARIES: ${CUDAToolkit_LIBRARIES}")
+message(STATUS "Eigen3_INCLUDE_DIR: ${Eigen3_INCLUDE_DIR}")

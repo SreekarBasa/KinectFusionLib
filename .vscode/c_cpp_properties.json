@@ -3,10 +3,12 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/**",  
+                "C:/Users/91901/Desktop/BTP/kinect/KinectFusionLib/include",
                 "C:/Program Files (x86)/eigen-3.4.0",
-                "C:/Users/91901/Desktop/BTP/kinect/opencv/build/include",
-                "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1/include"
+                "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1/include",
+                "C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409/inc",
+                "C:/Users/91901/Desktop/BTP/kinect/opencv/build/include"
             ],
             "defines": [
                 "_DEBUG",
@@ -14,10 +16,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.22621.0",
-            "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/XX.X.X/bin/Hostx64/x64/cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-clang-x64",
+            "intelliSenseMode": "windows-msvc-x64",
             "configurationProvider": "go2sh.cmake-integration"
         }
     ],

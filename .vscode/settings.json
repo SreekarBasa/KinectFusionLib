@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "fstream": "cpp"
+    },
+    "editor.codeActions.triggerOnFocusChange": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "C_Cpp_Runner.cppStandard": "",
+    "cmake.cpptools.compilerPath": "C:/Program Files/CMake/bin/cmake.exe",
+    "cmake.cpptools.intelliSenseMode": "msvc-x86",
+    "C_Cpp_Runner.warningsAsError": true,
+    "C_Cpp.errorSquiggles": "enabled"
+}
