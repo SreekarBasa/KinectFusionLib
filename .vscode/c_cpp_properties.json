@@ -8,7 +8,7 @@
                 "C:/Program Files (x86)/eigen-3.4.0",
                 "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1/include",
                 "C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409/inc",
-                "C:/Users/91901/Desktop/BTP/kinect/opencv/build/include"
+                "C:/Program Files/opencv/build/include"
             ],
             "defines": [
                 "_DEBUG",

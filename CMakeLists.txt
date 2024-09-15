@@ -23,7 +23,8 @@ message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
 message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS_PATH}")
 
 ## OpenCV
-set(OpenCV_DIR "C:/Program Files/opencv/build")
+set(OpenCV_DIR "C:/Program Files/opencv/build/x64/vc16/lib")
+find_package(OpenCV REQUIRED)
 if(OpenCV_FOUND)
     include_directories(${OpenCV_INCLUDE_DIRS})
 else()
