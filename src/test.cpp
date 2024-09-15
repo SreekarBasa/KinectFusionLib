@@ -1,19 +1,19 @@
 #include <iostream>
 using namespace std;
 
-#include <kinectfusion.h>
+#include <kinectfusion.h> // header file from github
 using namespace kinectfusion;
 
 #include <Kinect.h>  // Kinect 2 SDK header
 
-#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>  //opencv header files
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 using namespace cv;
 
 template<class Interface>
-inline void SafeRelease(Interface*& pInterfaceToRelease)
+inline void SafeRelease(Interface*& pInterfaceToRelease)  // for safe release, and to free resources 
 {
     if (pInterfaceToRelease != nullptr){
         pInterfaceToRelease->Release(); //free resources
@@ -21,18 +21,18 @@ inline void SafeRelease(Interface*& pInterfaceToRelease)
     }
 }
 
-struct InputFrame {
+struct InputFrame { 
     cv::Mat depth_map;  // Depth map (e.g., from IDepthFrame)
     cv::Mat color_map;  // Color map (e.g., from IColorFrame)
 };
 
-cv::Mat convertToDepthMap(IDepthFrame* depthFrame) {
+cv::Mat convertToDepthMap(IDepthFrame* depthFrame) { 
     if (!depthFrame) {
         return cv::Mat();
     }
 
     // Get depth frame description (width, height)
-    IFrameDescription* frameDescription = nullptr;
+    IFrameDescription* frameDescription = nullptr; //initialization
     int width = 0;
     int height = 0;
     UINT nBufferSize = 0;
