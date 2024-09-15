@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 # Setting output paths
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+set(KINECT_SDK_DIR "C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409")
+include_directories(${KINECT_SDK_DIR}/inc)
 
 # ------------------------------------------------
 # Dependencies
@@ -18,9 +20,6 @@ if(CUDAToolkit_FOUND)
     include_directories("${CUDAToolkit_INCLUDE_DIRS}")
     set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -O3 -std=c++11 -gencode arch=compute_52,code=sm_52")
 endif()
-
-message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
-message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS_PATH}")
 
 ## OpenCV
 set(OpenCV_DIR "C:/Program Files/opencv/build/x64/vc16/lib")
@@ -54,7 +53,7 @@ file(GLOB KinectFusion_SRCS "${PROJECT_SOURCE_DIR}/cuda/*.cu" "${PROJECT_SOURCE_
 add_library(KinectFusion STATIC ${KinectFusion_SRCS})
 
 # Link libraries
-target_link_libraries(KinectFusion ${OpenCV_LIBS} ${CUDAToolkit_LIBRARIES})
+target_link_libraries(KinectFusion ${OpenCV_LIBS} ${CUDAToolkit_LIBRARIES} "${KINECT_SDK_DIR}/Lib/*.lib")
 
 message(STATUS "OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
 message(STATUS "OpenCV_LIBS: ${OpenCV_LIBS_PATH}")

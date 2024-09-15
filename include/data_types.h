@@ -11,7 +11,7 @@
 #pragma GCC diagnostic ignored "-Wall"
 #pragma GCC diagnostic ignored "-Wextra"
 #pragma GCC diagnostic ignored "-Weffc++"
-#include <cuda_runtime.h>
+#include <cuda_runtime.h> 
 #include <opencv2/core/cuda.hpp>
 #include <Eigen/Eigen>
 #pragma GCC diagnostic pop

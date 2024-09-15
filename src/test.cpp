@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#include <kinectfusion.h>
+//#include <kinectfusion.h>
 
 #include <Kinect.h>  // Kinect 2 SDK header
 
