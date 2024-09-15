@@ -2,6 +2,7 @@
 using namespace std;
 
 #include <kinectfusion.h>
+using namespace kinectfusion;
 
 #include <Kinect.h>  // Kinect 2 SDK header
 
@@ -120,8 +121,18 @@ int main(){
     configuration.distance_threshold = 10.f;
     configuration.angle_threshold = 20.f;
 
+    kinectfusion::CameraParameters camParams;
+
+    // Set the values if necessary (optional since we have default values)
+    camParams.image_width = 512;
+    camParams.image_height = 424;
+    camParams.focal_x = 365.0f;
+    camParams.focal_y = 365.0f;
+    camParams.principal_x = 256.0f;
+    camParams.principal_y = 212.0f;
+
     // Create a KinectFusion pipeline with Kinect 2 intrinsics
-    kinectfusion::Pipeline pipeline { /* Kinect 2 camera intrinsics */ camera_parameters, configuration };
+    kinectfusion::Pipeline pipeline { /* Kinect 2 camera intrinsics */ camParams, configuration };
 
     // Loop over the incoming frames
     bool end = false;
